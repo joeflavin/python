@@ -11,7 +11,8 @@ import json
 
 filename = '.allcity_rss.json'
 urls = ['https://www.example.com/category/feed/',
-        'https://www.example.com/category/another/feed/']
+        'https://www.example.com/category/another/feed/',
+        'https://www.example.com/category/yet/another/feed/'']
 targets = ['list', 'of', 'target strings']
 
 
@@ -57,7 +58,7 @@ def main():
         feeds = [feedparser.parse(url)['entries'] for url in urls]
         items = []
         for feed in feeds:
-            feed_items = [ (entry['title'], entry['links'][0]['href']) for entry in feed ]
+            feed_items = [ [entry['title'], entry['links'][0]['href']] for entry in feed ]
             items.extend(feed_items)
 
     except Exception as e:

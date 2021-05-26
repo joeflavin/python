@@ -55,7 +55,7 @@ def main():
     try:
         feed = feedparser.parse(url)
         entries = feed['entries']
-        items = [ (entry['title'], entry['links'][0]['href']) for entry in entries ]
+        items = [ [entry['title'], entry['links'][0]['href']] for entry in entries ]
     except Exception as e:
         sys.exit(e)
 
