@@ -7,5 +7,8 @@ __Requires__: feedparser (`pip3 install feedparser`)
 
 __Suggested Usage__: Customise script and run as a cron-job.
 
-
+#### TO DO
+- Check error catching
+- Generalise to take feeds & target string as arguments
+- Run general script from cron
 
