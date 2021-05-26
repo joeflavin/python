@@ -14,13 +14,17 @@ url = 'https://www.example.com/category/feed/'
 targets = ['list', 'of', 'target strings']
 
 
-def send_email(arg, sub):
+def send_email(msg, sub):
+    """ Sends an email using gmail credentials
+
+        msg is the message, a string; sub is the subject line, a string
+    """
 
     gmail_user = 'yourname@gmail.com'
     gmail_password = 'app_speficic_gmail_password'
 
     msg = EmailMessage()
-    msg.set_content(arg)
+    msg.set_content(msg)
     msg['Subject'] = sub
     msg['From'] = 'Does This Work?'
     msg['To'] = 'yourname@gmail.com'
