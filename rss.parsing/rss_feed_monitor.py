@@ -6,10 +6,10 @@ import smtplib
 from email.message import EmailMessage
 from time import sleep
 import datetime
-import pickle
+import json
 
 
-filename = '.rss_feed_data.pkl'
+filename = '.rss_feed_data.json'
 url = 'https://www.example.com/category/feed/'
 targets = ['list', 'of', 'target strings']
 
@@ -40,7 +40,7 @@ def main():
     # First load the previous data if it exists
     if path.isfile(filename):
         with open(filename, 'rb') as f:
-            last_feed = pickle.load(f)
+            last_feed = json.load(f)
     else:
         last_feed = ''
 
@@ -73,7 +73,7 @@ def main():
 
         # Now save the data for next time
         with open(filename, 'wb') as f:
-            pickle.dump(items, f)
+            json.dump(items, f)
 
 
 if __name__ == "__main__":
