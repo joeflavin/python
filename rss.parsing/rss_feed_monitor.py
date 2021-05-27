@@ -8,23 +8,25 @@ from time import sleep
 import datetime
 import json
 
-
+# Set save file filename
 filename = '.rss_feed_data.json'
+# RSS feed URL
 url = 'https://www.example.com/category/feed/'
+# List of target strings
 targets = ['list', 'of', 'target strings']
+# Set gmail credentials
+gmail_user = 'yourname@gmail.com'
+gmail_password = 'app_speficic_gmail_password'
 
 
-def send_email(msg, sub):
+def send_email(body, sub):
     """ Sends an email using gmail credentials
 
-        msg is the message, a string; sub is the subject line, a string
+        body is the message, a string; sub is the subject line, a string
     """
 
-    gmail_user = 'yourname@gmail.com'
-    gmail_password = 'app_speficic_gmail_password'
-
     msg = EmailMessage()
-    msg.set_content(msg)
+    msg.set_content(body)
     msg['Subject'] = sub
     msg['From'] = 'Does This Work?'
     msg['To'] = 'yourname@gmail.com'
@@ -43,7 +45,7 @@ def send_email(msg, sub):
 def main():
     # First load the previous data if it exists
     if path.isfile(filename):
-        with open(filename, 'rb') as f:
+        with open(filename, 'r') as f:
             last_feed = json.load(f)
     else:
         last_feed = ''
@@ -76,7 +78,7 @@ def main():
             print("No hits this time.")
 
         # Now save the data for next time
-        with open(filename, 'wb') as f:
+        with open(filename, 'w') as f:
             json.dump(items, f)
 
 
