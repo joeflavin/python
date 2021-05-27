@@ -4,7 +4,6 @@ from os import path
 import feedparser
 import smtplib
 from email.message import EmailMessage
-from time import sleep
 import datetime
 import json
 
@@ -21,7 +20,7 @@ gmail_user = 'yourname@gmail.com'
 gmail_password = 'app_speficic_gmail_password'
 
 
-def send_email(body, sub):
+def send_email(body, subject):
     """ Sends an email using gmail credentials
 
         body is the message, a string; sub is the subject line, a string
@@ -29,7 +28,7 @@ def send_email(body, sub):
 
     msg = EmailMessage()
     msg.set_content(body)
-    msg['Subject'] = sub
+    msg['Subject'] = subject
     msg['From'] = 'Does This Work?'
     msg['To'] = 'yourname@gmail.com'
 
@@ -66,7 +65,6 @@ def main():
     except Exception as e:
         sys.exit(e)
 
-
     if items == last_feed:
         print("No updates")
     else:
@@ -74,7 +72,7 @@ def main():
         for item in items:
             for target in targets:
                 if target in item[0]:
-                    hit += " ".join( x for x in item)
+                    hit += " ".join(x for x in item)
                     hit += "\n"
 
         if hit != "":
